@@ -1,7 +1,7 @@
 Project Name
 
 Description
-Project Name is a web application designed for [project purpose]. Built with React, TypeScript, and Apollo Client, this app allows users to [main features]. The goal of this project is to [project goal].
+Project Name is a web application designed for Raven. Built with React, TypeScript, and Apollo Client, this app allows users to mannage tasks. The goal of this project is to present a mannagement solution.
 
 Table of Contents
 Installation
