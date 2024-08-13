@@ -1,3 +1,4 @@
+import { FC } from "react";
 //assets
 import WhiteLogo from "../assets/WhiteLogo.png";
 import { RiFunctionLine } from "react-icons/ri";
@@ -6,7 +7,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 //interfaces
 import { ChildProps } from "../Interfaces";
 
-const Navbar: React.FC<ChildProps> = ({ navbarToggle, navbarOptions }) => {
+const Navbar: FC<ChildProps> = ({ navbarToggle, navbarOptions }) => {
   return (
     <>
       <aside
@@ -55,16 +56,20 @@ const Navbar: React.FC<ChildProps> = ({ navbarToggle, navbarOptions }) => {
               onClick={() => navbarToggle(1)}
             >
               <div className="flex items-center p-4 text-gray-900 rounded-lg group">
-                <AiOutlineMenu className={
+                <AiOutlineMenu
+                  className={
                     navbarOptions === 1
                       ? "text-lg text-primary4"
                       : "text-lg text-neutral2"
-                  } />
-                <p  className={
+                  }
+                />
+                <p
+                  className={
                     navbarOptions === 1
                       ? "flex-1 ms-3 whitespace-nowrap ml-6 font-semibold text-lg text-primary4"
                       : "flex-1 ms-3 whitespace-nowrap ml-6 font-semibold text-lg text-neutral2"
-                  }>
+                  }
+                >
                   MY TASK
                 </p>
               </div>

@@ -12,8 +12,7 @@ import Swal from "sweetalert2";
 //request
 import { USERS_LIST, ADD_TASK, TASK_LIST } from "../../Utils/Querys";
 //interface
-import { UsersInterface, Task,ModalProps } from "../../Interfaces";
-
+import { UsersInterface, Task, ModalProps } from "../../Interfaces";
 
 const ModalCreate: FC<ModalProps> = ({ isOpen, onClose }) => {
   const [estimateOptions, setEstimateOptions] = useState<boolean>(false);
@@ -85,12 +84,12 @@ const ModalCreate: FC<ModalProps> = ({ isOpen, onClose }) => {
           text: "Task created",
           icon: "success",
         }).then(() => {
-          setEstimateOptionSelected(0)
-          setStatusSelected('')
-          setStatusLabel('')
-          setAssigneeSelected('')
-          setAssigneeLabel('')
-          setSelectedItems([])
+          setEstimateOptionSelected(0);
+          setStatusSelected("");
+          setStatusLabel("");
+          setAssigneeSelected("");
+          setAssigneeLabel("");
+          setSelectedItems([]);
           onClose();
         });
       }
@@ -206,14 +205,12 @@ const ModalCreate: FC<ModalProps> = ({ isOpen, onClose }) => {
               onClick={() => setStatusOptions(!statusOptions)}
             >
               <div className="flex bg-neutral1/10 rounded py-1 px-4">
-              <div className="px-1 mt-1">
+                <div className="px-1 mt-1">
                   <VscServerProcess className="text-neutral1" />
                 </div>
                 <div className="px-2">
                   <p className="text-neutral1 ">
-                    {statusLabel === ""
-                      ? "Status"
-                      : statusLabel }
+                    {statusLabel === "" ? "Status" : statusLabel}
                   </p>
                 </div>
                 <div
@@ -222,7 +219,6 @@ const ModalCreate: FC<ModalProps> = ({ isOpen, onClose }) => {
                     statusOptions ? "" : "hidden"
                   }`}
                 >
-                  
                   <div
                     className="py-2 p-2 w-full"
                     role="menu"
@@ -230,18 +226,16 @@ const ModalCreate: FC<ModalProps> = ({ isOpen, onClose }) => {
                     aria-labelledby="dropdown-button"
                   >
                     <div className="w-full flex justify-center mt-2">
-                    <p className="text-neutral2 font-bold text-lg">
-                      Status
-                    </p>
-                  </div>
+                      <p className="text-neutral2 font-bold text-lg">Status</p>
+                    </div>
                     <div
                       className=" px-4 py-2 mb-1 text-sm text-neutral1 cursor-pointer flex hover:bg-neutral2"
                       role="menuitem"
-                      onClick={() => {setStatusSelected('TODO')
-                        setStatusLabel('Working')
+                      onClick={() => {
+                        setStatusSelected("TODO");
+                        setStatusLabel("Working");
                       }}
                     >
-                      
                       <div className="px-1">
                         <p className="text-neutral1 ">Working</p>
                       </div>
@@ -249,11 +243,11 @@ const ModalCreate: FC<ModalProps> = ({ isOpen, onClose }) => {
                     <div
                       className=" px-4 py-2 mb-1 text-sm text-neutral1 cursor-pointer flex hover:bg-neutral2"
                       role="menuitem"
-                      onClick={() => {setStatusSelected("IN_PROGRESS")
-                        setStatusLabel('In Progress')
+                      onClick={() => {
+                        setStatusSelected("IN_PROGRESS");
+                        setStatusLabel("In Progress");
                       }}
                     >
-                      
                       <div className="px-1">
                         <p className="text-neutral1 ">In Progress</p>
                       </div>
@@ -261,11 +255,11 @@ const ModalCreate: FC<ModalProps> = ({ isOpen, onClose }) => {
                     <div
                       className=" px-4 py-2 mb-1 text-sm text-neutral1 hover:bg-neutral2 cursor-pointer flex"
                       role="menuitem"
-                      onClick={() => {setStatusSelected('DONE')
-                        setStatusLabel('Completed')
+                      onClick={() => {
+                        setStatusSelected("DONE");
+                        setStatusLabel("Completed");
                       }}
                     >
-                      
                       <div className="px-1">
                         <p className="text-neutral1 ">Completed</p>
                       </div>
@@ -273,11 +267,11 @@ const ModalCreate: FC<ModalProps> = ({ isOpen, onClose }) => {
                     <div
                       className=" px-4 py-2 mb-1 text-sm text-neutral1 hover:bg-neutral2 cursor-pointer flex"
                       role="menuitem"
-                      onClick={() => {setStatusSelected("CANCELLED")
-                        setStatusLabel('Cancelled')
-                       }}
+                      onClick={() => {
+                        setStatusSelected("CANCELLED");
+                        setStatusLabel("Cancelled");
+                      }}
                     >
-                      
                       <div className="px-1">
                         <p className="text-neutral1 ">Cancelled</p>
                       </div>
@@ -285,11 +279,11 @@ const ModalCreate: FC<ModalProps> = ({ isOpen, onClose }) => {
                     <div
                       className=" px-4 py-2 mb-1 text-sm text-neutral1 hover:bg-neutral2 cursor-pointer flex"
                       role="menuitem"
-                      onClick={() => {setStatusSelected("BACKLOG")
-                        setStatusLabel('Backlog')
+                      onClick={() => {
+                        setStatusSelected("BACKLOG");
+                        setStatusLabel("Backlog");
                       }}
                     >
-                     
                       <div className="px-1">
                         <p className="text-neutral1 ">Backlog</p>
                       </div>
@@ -460,8 +454,12 @@ const ModalCreate: FC<ModalProps> = ({ isOpen, onClose }) => {
                         </div>
                       </div>
                       <div className="w-full flex flex-1 justify-end mb-2">
-                        <button type="button" className="px-4 py-2 bg-primary2 text-white rounded hover:bg-primary4" onClick={() =>setTagsOptions(!tagsOptions)}>
-                            close
+                        <button
+                          type="button"
+                          className="px-4 py-2 bg-primary2 text-white rounded hover:bg-primary4"
+                          onClick={() => setTagsOptions(!tagsOptions)}
+                        >
+                          close
                         </button>
                       </div>
                     </div>
@@ -469,8 +467,8 @@ const ModalCreate: FC<ModalProps> = ({ isOpen, onClose }) => {
                 </div>
               </div>
             </div>
-            <div className="w-1/5 mx-2 flex relative cursor-pointer">
-              <div className="flex bg-neutral1/10 rounded py-1 px-4">
+            <div className="w-1/5 mx-2 flex relative">
+              <div className="flex bg-neutral1/10 rounded py-1 px-4 ">
                 <div className="px-1 mt-1">
                   <FaCalendarAlt className="text-neutral1 mr-2" />
                 </div>
@@ -479,7 +477,7 @@ const ModalCreate: FC<ModalProps> = ({ isOpen, onClose }) => {
                   onChange={(date: Date | null) => {
                     setStartDateSelected(date);
                   }}
-                  className="bg-white border border-gray-300 rounded-lg px-4  focus:border-transparent"
+                  className="bg-neutral4 border border-gray-300 rounded-lg px-4  focus:border-transparent"
                   dateFormat="dd/MM/yyyy"
                   id="date-picker"
                   placeholderText="Due Date"

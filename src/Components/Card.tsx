@@ -8,7 +8,7 @@ import { FaRegComment } from "react-icons/fa";
 import { RiOrganizationChart, RiDeleteBinLine } from "react-icons/ri";
 import { MdOutlineEdit } from "react-icons/md";
 import Avatar from "../assets/Avatar.png";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 //interface
 import { TaskInterface, Task } from "../Interfaces";
 import { DELETE_TASK, TASK_LIST } from "../Utils/Querys";
@@ -19,20 +19,19 @@ const Card: FC<TaskInterface> = ({ tasks }) => {
   const [dateLabel, setDateLabel] = useState<string>("");
   const [estimateLabel, setEstimateLabel] = useState<number>(0);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
- 
 
   //toggle menu
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);
   };
-    //modal interaction
-    const openModal = () => {
-      setIsModalOpen(true);
-    };
-  
-    const closeModal = () => {
-      setIsModalOpen(false);
-    };
+  //modal interaction
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   //date format
   const formatDate = () => {
@@ -84,23 +83,23 @@ const Card: FC<TaskInterface> = ({ tasks }) => {
 
     setDateLabel(dateFormated);
   };
-    //point format
-    const formatPoint = () => {
-      if (tasks.pointEstimate === "ZERO") {
-        setEstimateLabel(0);
-      } else if (tasks.pointEstimate === "ONE") {
-        setEstimateLabel(1);
-      } else if (tasks.pointEstimate === "TWO") {
-        setEstimateLabel(2);
-      } else if (tasks.pointEstimate === "FOUR") {
-        setEstimateLabel(4);
-      } else if (tasks.pointEstimate === "EIGHT") {
-        setEstimateLabel(8);
-      }
-    };
+  //point format
+  const formatPoint = () => {
+    if (tasks.pointEstimate === "ZERO") {
+      setEstimateLabel(0);
+    } else if (tasks.pointEstimate === "ONE") {
+      setEstimateLabel(1);
+    } else if (tasks.pointEstimate === "TWO") {
+      setEstimateLabel(2);
+    } else if (tasks.pointEstimate === "FOUR") {
+      setEstimateLabel(4);
+    } else if (tasks.pointEstimate === "EIGHT") {
+      setEstimateLabel(8);
+    }
+  };
   useEffect(() => {
     formatDate();
-    formatPoint()
+    formatPoint();
   });
 
   //delete function
@@ -111,8 +110,7 @@ const Card: FC<TaskInterface> = ({ tasks }) => {
       },
     ],
   });
-  const deleteTask = async (task: Task) =>{
-    
+  const deleteTask = async (task: Task) => {
     Swal.fire({
       title: "Are you sure?",
       text: `This action will delete ${task.name}`,
@@ -120,15 +118,15 @@ const Card: FC<TaskInterface> = ({ tasks }) => {
       showCancelButton: true,
       confirmButtonColor: "#DA584B",
       cancelButtonColor: "#94979A",
-      confirmButtonText: "Yes, delete it!", 
-    }).then( async (result) => {
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        toggleMenu()
+        toggleMenu();
         try {
           const { data } = await delTask({
             variables: {
               input: {
-                id: task.id
+                id: task.id,
               },
             },
           });
@@ -147,10 +145,9 @@ const Card: FC<TaskInterface> = ({ tasks }) => {
             icon: "error",
           });
         }
-       
       }
     });
-  }
+  };
 
   return (
     <div className="w-11/12 bg-neutral4 rounded-xl py-5 px-3 mt-5">
@@ -176,8 +173,9 @@ const Card: FC<TaskInterface> = ({ tasks }) => {
             <div
               className=" px-4 py-2 mb-1 text-sm text-neutral1 cursor-pointer flex"
               role="menuitem"
-              onClick={() => {openModal()
-                toggleMenu()
+              onClick={() => {
+                openModal();
+                toggleMenu();
               }}
             >
               <MdOutlineEdit className="mr-1 text-lg" />

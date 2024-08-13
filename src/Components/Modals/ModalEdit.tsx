@@ -11,11 +11,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 //request
-import {
-  USERS_LIST,
-  TASK_LIST,
-  UPDATE_TASK,
-} from "../../Utils/Querys";
+import { USERS_LIST, TASK_LIST, UPDATE_TASK } from "../../Utils/Querys";
 //interface
 import { UsersInterface, Task, ModalProps } from "../../Interfaces";
 
@@ -46,8 +42,10 @@ const ModalEdit: FC<ModalProps> = ({ isOpen, onClose, taskEdit }) => {
     setValue("name", taskEdit?.name ?? "");
     setStatusSelected(taskEdit?.status);
     setSelectedItems(taskEdit?.tags ?? []);
-    setAssigneeSelected(taskEdit?.assignee.id ?? '')
-    setAssigneeLabel(taskEdit?.assignee.fullName.split(" ").slice(0, 2).join(" ") ?? "")
+    setAssigneeSelected(taskEdit?.assignee.id ?? "");
+    setAssigneeLabel(
+      taskEdit?.assignee.fullName.split(" ").slice(0, 2).join(" ") ?? ""
+    );
     const dueDate = taskEdit?.dueDate ? new Date(taskEdit.dueDate) : null;
     setStartDateSelected(dueDate && !isNaN(dueDate.getTime()) ? dueDate : null);
 
@@ -117,7 +115,7 @@ const ModalEdit: FC<ModalProps> = ({ isOpen, onClose, taskEdit }) => {
                 : "ZERO",
             tags: selectedItems,
             status: statusSelected,
-            id: taskEdit?.id
+            id: taskEdit?.id,
           },
         },
       });
@@ -127,7 +125,6 @@ const ModalEdit: FC<ModalProps> = ({ isOpen, onClose, taskEdit }) => {
           text: "Task Edited",
           icon: "success",
         }).then(() => {
-          
           onClose();
         });
       }
@@ -509,7 +506,7 @@ const ModalEdit: FC<ModalProps> = ({ isOpen, onClose, taskEdit }) => {
                 </div>
               </div>
             </div>
-            <div className="w-1/5 mx-2 flex relative cursor-pointer">
+            <div className="w-1/5 mx-2 flex relative">
               <div className="flex bg-neutral1/10 rounded py-1 px-4">
                 <div className="px-1 mt-1">
                   <FaCalendarAlt className="text-neutral1 mr-2" />
@@ -519,7 +516,7 @@ const ModalEdit: FC<ModalProps> = ({ isOpen, onClose, taskEdit }) => {
                   onChange={(date: Date | null) => {
                     setStartDateSelected(date);
                   }}
-                  className="bg-white border border-gray-300 rounded-lg px-4  focus:border-transparent"
+                  className="bg-neutral4 border border-gray-300 rounded-lg px-4  focus:border-transparent"
                   dateFormat="dd/MM/yyyy"
                   id="date-picker"
                   placeholderText="Due Date"

@@ -12,11 +12,8 @@ import { PROFILE_INFORMATION } from "../../Utils/Querys";
 const ModalSettings: FC<ModalProps> = ({ isOpen, onClose }) => {
   //data request
   const { data, error, loading } = useQuery(PROFILE_INFORMATION);
-
-  console.log("user info", data);
-
   if (!isOpen) return null;
-  
+
   if (loading) {
     return (
       <div className="flex w-full justify-center mt-10">
@@ -67,7 +64,7 @@ const ModalSettings: FC<ModalProps> = ({ isOpen, onClose }) => {
               <div className="p-3 text-center">
                 <span className="text-sm text-neutral1">Last Update</span>
                 <span className="text-xl font-bold block uppercase tracking-wide text-neutral2">
-                {new Date(data.profile.updatedAt).toLocaleDateString()}
+                  {new Date(data.profile.updatedAt).toLocaleDateString()}
                 </span>
               </div>
             </div>
