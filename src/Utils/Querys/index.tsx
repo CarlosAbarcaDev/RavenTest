@@ -41,6 +41,20 @@ export const USERS_LIST = gql`
     }
   }
 `;
+export const PROFILE_INFORMATION = gql`
+ query Query {
+  profile {
+    avatar
+    createdAt
+    email
+    fullName
+    id
+    type
+    updatedAt
+  }
+}
+
+`;
 export const ADD_TASK = gql`
   mutation Mutation($input: CreateTaskInput!) {
   createTask(input: $input) {
